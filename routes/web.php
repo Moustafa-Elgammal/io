@@ -16,10 +16,10 @@ Route::get('/', function () {
 });
 
 
-Route::group(['prefix' => 'posts', 'middleware'=>['posts'] ],function (){
+Route::group(['prefix' => 'posts'],function (){
     Route::get('/', 'PostsController@index');
     Route::get('/{id}', 'PostsController@show');
     Route::get('/{id}/recover', 'PostsController@recover')->middleware('postsOwners');
-    Route::post('/{id}/delete', 'PostsController@delete')->middlerware('postsOwners');
-    Route::post('/{id}/update', 'PostsController@update')->middlerware('postsOwners');
+    Route::post('/{id}/delete', 'PostsController@delete')->middleware('postsOwners');
+    Route::post('/{id}/update', 'PostsController@update')->middleware('postsOwners');
 });
